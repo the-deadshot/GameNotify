@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -42,6 +43,9 @@ GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth auth;
     SignInButton signInButton;
 
+    ImageView profileImage;
+    private GoogleApiClient googleApiClient;
+    private GoogleSignInOptions gso;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

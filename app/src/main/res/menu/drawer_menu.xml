@@ -4,10 +4,7 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
 
-        <item
-            android:id="@+id/message"
-            android:icon="@drawable/ic_message"
-            android:title="message" />
+
 
 
         <item
@@ -15,31 +12,28 @@
             android:icon="@drawable/ic_person"
             android:title="Profile" />
 
-        <item android:title="Communicate">
-            <menu>
+        <item
+            android:id="@+id/friend"
+            android:icon="@drawable/ic_friend"
+            android:title="Friends" />
+
                 <item
                     android:id="@+id/nav_share"
                     android:icon="@drawable/ic_share"
-                    android:title="share" />
+                    android:title="Share" />
 
                 <item
                     android:id="@+id/nav_feedback"
                     android:icon="@drawable/ic_feedback"
-                    android:title="feedback" />
-
-            </menu>
-        </item>
+                    android:title="Feedback" />
 
 
-        <item android:title="Other">
-            <menu>
+
                 <item
                     android:id="@+id/logout"
                     android:icon="@drawable/ic_close"
                     android:title="Logout" />
-            </menu>
 
-            </item>
     </group>
 
 </menu>
