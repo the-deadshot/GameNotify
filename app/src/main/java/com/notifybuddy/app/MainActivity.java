@@ -76,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        mGoogleSignInClient= GoogleSignIn.getClient(this,gso);
+        mGoogleSignInClient = GoogleSignIn.getClient(this,gso);
 
-        signInButton=(SignInButton)findViewById(R.id.sign_in_button);
+        signInButton = (SignInButton)findViewById(R.id.sign_in_button);
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -129,8 +129,6 @@ public class MainActivity extends AppCompatActivity {
                             // If sign in fails, display a message to the user.
                             Toast.makeText(getApplicationContext(),"Could not log in, try again",Toast.LENGTH_SHORT).show();
                         }
-
-                        // ...
                     }
                 });
 

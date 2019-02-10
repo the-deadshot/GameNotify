@@ -10,22 +10,11 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.common.api.Status;
-import com.notifybuddy.app.R;
-
-import java.util.NavigableMap;
 
 public class FrndonlineActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener, NavigationView.OnNavigationItemSelectedListener{
     DrawerLayout drawer;
@@ -52,33 +41,28 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new MessageFragment()).commit();
+                    new DashboardFragment()).commit();
             navigationView.setCheckedItem(R.id.dashboard);
         }
-        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this,this)
-                .addApi(Auth.GOOGLE_SIGN_IN_API , gso)
-                .build();
-
-
-
-
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
+            case R.id.dashboard:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new DashboardFragment()).commit();
+                break;
             case R.id.profile:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new MessageFragment()).commit();
+                        new ProfileFragment()).commit();
                 break;
             case R.id.logout:
-                Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(this, MainActivity.class);
+                startActivity(i);
                 break;
         }
+        drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 

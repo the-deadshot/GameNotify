@@ -8,12 +8,12 @@
     tools:showIn="@layout/activity_main"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="#4a148c">
+    android:background="@drawable/back">
 
     <ImageView
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:src="@drawable/circle_button" />
+        android:src="@drawable/logo" />
 
     <TextView
         android:layout_width="wrap_content"
