@@ -1,4 +1,4 @@
-package com.example.ajay.game;
+package com.notifybuddy.app;
 
 import org.junit.Test;
 

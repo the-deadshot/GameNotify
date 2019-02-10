@@ -1,4 +1,4 @@
-package com.example.ajay.game;
+package com.notifybuddy.app;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
@@ -39,13 +39,20 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class MainActivity extends AppCompatActivity {
-GoogleSignInClient mGoogleSignInClient;
+    GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth auth;
     SignInButton signInButton;
 
     ImageView profileImage;
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,21 +64,20 @@ GoogleSignInClient mGoogleSignInClient;
 
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestIdToken("167556988084-vjav09ivmfv1kvsnjfo9nb2gf5hpavv3.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
-mGoogleSignInClient= GoogleSignIn.getClient(this,gso);
+        mGoogleSignInClient= GoogleSignIn.getClient(this,gso);
 
-signInButton=(SignInButton)findViewById(R.id.sign_in_button);
-signInButton.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
-        startActivityForResult(signInIntent, 101);
+        signInButton=(SignInButton)findViewById(R.id.sign_in_button);
+        signInButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                signIn();
 
-    }
-});
+            }
+        });
 
     }
     private void signIn() {
