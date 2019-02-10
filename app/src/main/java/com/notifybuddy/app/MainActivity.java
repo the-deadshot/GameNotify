@@ -16,6 +16,9 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -29,6 +32,8 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -56,8 +61,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        setContentView(R.layout.activity_main);
 
 
         auth = FirebaseAuth.getInstance();
@@ -78,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
 
     }
     private void signIn() {
@@ -114,11 +123,11 @@ public class MainActivity extends AppCompatActivity {
                             Intent i = new Intent(getApplicationContext(),FrndonlineActivity.class);
                             startActivity(i);
                             finish();
-                            Toast.makeText(getApplicationContext(),"user login successfully",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Login successful",Toast.LENGTH_SHORT).show();
 
                         } else {
                             // If sign in fails, display a message to the user.
-                            Toast.makeText(getApplicationContext(),"could not  login user",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Could not log in, try again",Toast.LENGTH_SHORT).show();
                         }
 
                         // ...

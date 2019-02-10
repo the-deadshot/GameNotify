@@ -2,10 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
-    <group android:checkableBehavior="single">
+    <group android:checkableBehavior="single"
+     >
 
 
-
+        <item
+            android:id="@+id/dashboard"
+            android:icon="@drawable/ic_home"
+            android:title="Home" />
 
         <item
             android:id="@+id/profile"
@@ -17,22 +21,22 @@
             android:icon="@drawable/ic_friend"
             android:title="Friends" />
 
-                <item
-                    android:id="@+id/nav_share"
-                    android:icon="@drawable/ic_share"
-                    android:title="Share" />
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share"
+            android:title="Share" />
 
-                <item
-                    android:id="@+id/nav_feedback"
-                    android:icon="@drawable/ic_feedback"
-                    android:title="Feedback" />
+        <item
+            android:id="@+id/nav_feedback"
+            android:icon="@drawable/ic_feedback"
+            android:title="Feedback" />
 
 
 
-                <item
-                    android:id="@+id/logout"
-                    android:icon="@drawable/ic_close"
-                    android:title="Logout" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/ic_close"
+            android:title="Logout" />
 
     </group>
 
