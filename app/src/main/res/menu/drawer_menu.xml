@@ -22,12 +22,12 @@
             android:title="Friends" />
 
         <item
-            android:id="@+id/nav_share"
+            android:id="@+id/share"
             android:icon="@drawable/ic_share"
             android:title="Share" />
 
         <item
-            android:id="@+id/nav_feedback"
+            android:id="@+id/feedback"
             android:icon="@drawable/ic_feedback"
             android:title="Feedback" />
 
