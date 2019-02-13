@@ -12,10 +12,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -27,9 +25,6 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
 
     private GoogleApiClient googleApiClient;
     private GoogleSignInOptions gso;
-    TextView messagedata;
-    ImageButton send;
-    Firebase firebase;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +32,8 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
         setContentView(R.layout.activity_frndonline);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
 
-        // create id for data
-         messagedata = findViewById(R.id.feedback_message);
-         send=findViewById(R.id.btn_send);
         Firebase.setAndroidContext(this);
 
 
@@ -60,27 +52,7 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
             navigationView.setCheckedItem(R.id.dashboard);
         }
 
-        String  UniqueID = Settings.Secure.getString(getApplicationContext().getContentResolver(),Settings.Secure.ANDROID_ID);
-        firebase = new Firebase("https://notifybuddy-464c2.firebaseio.com/Users"+ UniqueID);
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              final  String message = messagedata.getText().toString();
-
-                Firebase child_message = firebase.child("Message");
-                child_message.setValue(message);
-               if (message.isEmpty())
-               {
-                  messagedata.setError("This is an require field!");
-                  send.setEnabled(false);
-               }
-               else {
-                   messagedata.setError(null);
-                   send.setEnabled(true);
-               }
-            }
-        });
     }
 
     @Override
