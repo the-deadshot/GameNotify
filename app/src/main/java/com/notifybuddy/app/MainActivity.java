@@ -53,8 +53,8 @@ public class MainActivity extends AppCompatActivity {
     SignInButton signInButton;
 
     public FirebaseUser user;
-    public String name, email;
-    public Uri profileURL;
+    public static String name, email;
+    public static Uri profileURL;
 
     @Override
     protected void onStart() {
@@ -123,18 +123,16 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
-                            MainActivity ma = new MainActivity();
-
                             FirebaseUser user = auth.getCurrentUser();
-                            ma.name = user.getDisplayName();
-                            ma.email  = user.getEmail();
-                            ma.profileURL = user.getPhotoUrl();
+                            MainActivity.name = user.getDisplayName();
+                            MainActivity.email  = user.getEmail();
+                            MainActivity.profileURL = user.getPhotoUrl();
 
 
                             Intent i = new Intent(getApplicationContext(),FrndonlineActivity.class);
                             startActivity(i);
                             finish();
-                            Toast.makeText(getApplicationContext(),"Login successful" , Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Login successful" + MainActivity.profileURL , Toast.LENGTH_SHORT).show();
 
                         } else {
                             // If sign in fails, display a message to the user.

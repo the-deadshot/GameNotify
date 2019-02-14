@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -47,9 +49,15 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
         View navHead = navigationView.getHeaderView(0);
 
         TextView name = navHead.findViewById(R.id.name);
-        name.setText(ma.name);
+        name.setText(MainActivity.name);
         TextView email = navHead.findViewById(R.id.email);
-        email.setText(ma.email);
+        email.setText(MainActivity.email);
+        ImageView profile = navHead.findViewById(R.id.profileImage);
+        try{
+            Glide.with(this).load(MainActivity.profileURL).into(profile);
+        }catch (NullPointerException e){
+            Toast.makeText(getApplicationContext(),"Image not found",Toast.LENGTH_LONG).show();
+        }
 
 
         drawer = findViewById(R.id.drawer_layout);
