@@ -34,18 +34,25 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
         setContentView(R.layout.activity_frndonline);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         Firebase.setAndroidContext(this);
 
 
-        drawer = findViewById(R.id.drawer_layout);
+        MainActivity ma = new MainActivity();
+
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        View headerview = navigationView.getHeaderView(0);
-//        ImageView imageView = (ImageView)headerview.findViewById(R.id.photo);
+        View navHead = navigationView.getHeaderView(0);
 
+        TextView name = navHead.findViewById(R.id.name);
+        name.setText(ma.name);
+        TextView email = navHead.findViewById(R.id.email);
+        email.setText(ma.email);
+
+
+        drawer = findViewById(R.id.drawer_layout);
 
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar

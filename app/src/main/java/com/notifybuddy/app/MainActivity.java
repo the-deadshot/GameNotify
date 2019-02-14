@@ -2,6 +2,7 @@ package com.notifybuddy.app;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -20,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.auth.api.Auth;
@@ -43,14 +45,16 @@ import com.google.firebase.auth.FirebaseAuthException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.net.URI;
+
 public class MainActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private FirebaseAuth auth;
     SignInButton signInButton;
 
-    ImageView profileImage;
-    private GoogleApiClient googleApiClient;
-    private GoogleSignInOptions gso;
+    public FirebaseUser user;
+    public String name, email;
+    public Uri profileURL;
 
     @Override
     protected void onStart() {
@@ -119,11 +123,18 @@ public class MainActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
 
+                            MainActivity ma = new MainActivity();
+
                             FirebaseUser user = auth.getCurrentUser();
+                            ma.name = user.getDisplayName();
+                            ma.email  = user.getEmail();
+                            ma.profileURL = user.getPhotoUrl();
+
+
                             Intent i = new Intent(getApplicationContext(),FrndonlineActivity.class);
                             startActivity(i);
                             finish();
-                            Toast.makeText(getApplicationContext(),"Login successful",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(),"Login successful" , Toast.LENGTH_SHORT).show();
 
                         } else {
                             // If sign in fails, display a message to the user.
