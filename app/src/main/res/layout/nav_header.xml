@@ -11,8 +11,8 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/photo"
-        android:src="@mipmap/ic_launcher_round" />
+        android:id="@+id/profileImage"
+      />
 
     <TextView
         android:layout_width="wrap_content"
@@ -20,7 +20,7 @@
         android:paddingTop="8sp"
         android:id="@+id/name"
         android:text="game app"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        />
 
     <TextView
         android:id="@+id/email"

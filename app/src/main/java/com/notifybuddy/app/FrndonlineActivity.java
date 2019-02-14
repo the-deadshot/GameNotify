@@ -1,6 +1,7 @@
 package com.notifybuddy.app;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.annotation.NonNull;
@@ -13,8 +14,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
-
+import com.bumptech.glide.Glide;
 import com.firebase.client.Firebase;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.ConnectionResult;
@@ -41,6 +43,11 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+//        View headerview = navigationView.getHeaderView(0);
+//        ImageView imageView = (ImageView)headerview.findViewById(R.id.photo);
+
+
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,drawer,toolbar
                 ,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
@@ -54,6 +61,8 @@ public class FrndonlineActivity extends AppCompatActivity implements GoogleApiCl
 
 
     }
+
+
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
